@@ -1,8 +1,8 @@
 import { AppController } from '../controller/controller';
 import { AppView } from '../view/appView';
+import { INewsRes, ISourcesRes } from "./types";
 
 export class App {
-    // todo: Сейчас автоматически считывает? Как лучше сделать?
     controller: AppController;
     view: AppView;
 
@@ -15,9 +15,7 @@ export class App {
         document
             .querySelector('.sources')
             .addEventListener('click', (e: Event) =>
-              // todo: Как узнать тип data?
-              this.controller.getNews(e, (data) => this.view.drawNews(data)));
-        // todo: Как узнать тип data?
-        this.controller.getSources((data) => this.view.drawSources(data));
+              this.controller.getNews(e, (data: INewsRes) => this.view.drawNews(data)));
+        this.controller.getSources((data: ISourcesRes) => this.view.drawSources(data));
     }
 }

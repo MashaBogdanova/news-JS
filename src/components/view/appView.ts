@@ -1,8 +1,8 @@
 import { News } from './news/news';
 import { Sources } from './sources/sources';
+import { IArticle, INewsRes, ISource, ISourcesRes } from "../app/types";
 
 export class AppView {
-    // todo: Сейчас автоматически считывает? Как лучше сделать?
     news: News;
     sources: Sources;
 
@@ -10,14 +10,14 @@ export class AppView {
         this.news = new News();
         this.sources = new Sources();
     }
-    // todo: Как узнать тип data
-    drawNews(data: any): void {
+
+    drawNews(data: INewsRes): void {
         const values = data?.articles ? data?.articles : [];
-        this.news.draw(values);
+        this.news.draw(values as Array<IArticle>);
     }
-    // todo: Как узнать тип data
-    drawSources(data: any): void {
+
+    drawSources(data: ISourcesRes): void {
         const values = data?.sources ? data?.sources : [];
-        this.sources.draw(values);
+        this.sources.draw(values as Array<ISource>);
     }
 }

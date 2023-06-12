@@ -1,7 +1,8 @@
 import { AppLoader } from './appLoader';
+import { INewsRes, ISourcesRes } from "../app/types";
 
 export class AppController extends AppLoader {
-    getSources(callback: (data?: any) => void) {
+    getSources(callback: (data: ISourcesRes) => void) {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -10,8 +11,8 @@ export class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: (data?: any) => void) {
-        let target: EventTarget | null = e.target;
+    getNews(e: Event, callback: (data: INewsRes) => void) {
+        let target: HTMLElement = e.target as HTMLElement;
         const newsContainer: HTMLElement = e.currentTarget as HTMLElement;
 
         while (target !== newsContainer) {
@@ -31,7 +32,7 @@ export class AppController extends AppLoader {
                 }
                 return;
             }
-            target = target.parentNode;
+            target = target.parentNode as HTMLElement;
         }
     }
 }

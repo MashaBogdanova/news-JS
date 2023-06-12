@@ -1,13 +1,15 @@
 import './news.css';
+import { IArticle } from "../../app/types";
 
 export class News {
-    draw(data) {
+    draw(data: Array<IArticle>) {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment = document.createDocumentFragment();
         const newsItemTemp = document.querySelector('#newsItemTemp');
 
         news.forEach((item, idx) => {
+            // todo: что такое content?
             const newsClone = newsItemTemp.content.cloneNode(true);
 
             if (idx % 2) newsClone.querySelector('.news__item').classList.add('alt');

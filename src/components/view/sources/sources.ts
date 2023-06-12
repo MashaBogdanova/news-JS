@@ -1,15 +1,12 @@
 import './sources.css';
-
-interface IItem {
-    name: string;
-    id: string;
-}
+import { ISource } from "../../app/types";
 
 export class Sources {
-    draw(data: Array<IItem>): void {
+    draw(data: Array<ISource>): void {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp');
 
+        // todo: что такое content?
         data.forEach((item) => {
             const sourceClone = sourceItemTemp.content.cloneNode(true);
 
