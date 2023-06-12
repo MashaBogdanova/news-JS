@@ -1,6 +1,6 @@
 import './news.css';
 
-class News {
+export class News {
     draw(data) {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
@@ -34,5 +34,3 @@ class News {
         document.querySelector('.news').appendChild(fragment);
     }
 }
-
-export default News;

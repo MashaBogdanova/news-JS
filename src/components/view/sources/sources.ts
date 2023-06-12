@@ -1,7 +1,12 @@
 import './sources.css';
 
-class Sources {
-    draw(data) {
+interface IItem {
+    name: string;
+    id: string;
+}
+
+export class Sources {
+    draw(data: Array<IItem>): void {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp');
 
@@ -17,5 +22,3 @@ class Sources {
         document.querySelector('.sources').append(fragment);
     }
 }
-
-export default Sources;
